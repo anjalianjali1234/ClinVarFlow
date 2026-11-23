@@ -1,0 +1,5 @@
+chrom	pos	ref	alt	gene	consequence	impact	hgvsc	hgvsp	clinvar	gnomad_af	tier	depth	vaf
+chr22	1	G	A	TP53	missense_variant	MODERATE			Pathogenic	0.01	1	20	0.4
+chr22	2	G	A	BRCA1	stop_gained	HIGH				0.0002	2	20	0.4
+chr22	3	G	A	DEMO	synonymous_variant	LOW				0.005	3	20	0.4
+chr22	4	G	A	BRCA1	stop_gained	HIGH						20	0.4

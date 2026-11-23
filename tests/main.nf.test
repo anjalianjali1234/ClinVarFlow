@@ -1,0 +1,11 @@
+nextflow_pipeline {
+    name "Synthetic annotation and consensus"
+    script "../main.nf"
+    test("Offline example renders evidence and report") {
+        when { params { demo = true; outdir = "$outputDir/results" } }
+        then {
+            assert workflow.success
+            assert new File("$outputDir/results/demo.report.html").text.contains("Tier 1 and 2")
+        }
+    }
+}

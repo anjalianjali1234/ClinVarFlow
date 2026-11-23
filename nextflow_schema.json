@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClinVarFlow parameters",
+  "type": "object",
+  "properties": {
+    "input": {
+      "type": "string",
+      "description": "FASTQ samplesheet CSV"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Prepared GRCh38 bundle directory"
+    },
+    "outdir": {
+      "type": "string",
+      "default": "results"
+    },
+    "assay": {
+      "enum": [
+        "wes",
+        "wgs",
+        "panel"
+      ]
+    },
+    "tools": {
+      "type": "string"
+    },
+    "arriba_only": {
+      "type": "boolean"
+    },
+    "genes": {
+      "type": "string"
+    },
+    "min_f1": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "benchmark_sample": {
+      "type": "string"
+    },
+    "load_db": {
+      "type": "boolean"
+    },
+    "demo": {
+      "type": "boolean"
+    },
+    "annovar_dir": {
+      "type": "string"
+    },
+    "annovar_protocols": {
+      "type": "string"
+    },
+    "image_prefix": {
+      "type": "string"
+    }
+  }
+}

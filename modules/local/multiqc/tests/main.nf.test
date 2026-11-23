@@ -1,0 +1,17 @@
+nextflow_process {
+    name "MULTIQC process interface"
+    script "../main.nf"
+    process "MULTIQC"
+    options "-stub-run"
+    test("Stages inputs and emits the declared outputs") {
+        when {
+            params { outdir = "$outputDir/results" }
+            process {
+                """
+                    input[0] = file("$projectDir/tests/staging/f1")
+                """
+            }
+        }
+        then { assert process.success; assert process.out[0].size() == 1 }
+    }
+}

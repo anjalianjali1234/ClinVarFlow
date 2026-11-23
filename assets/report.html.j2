@@ -1,0 +1,6 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>{{sample}} | ClinVarFlow</title>
+<style>body{font:16px system-ui;max-width:76rem;margin:2rem auto;padding:0 1rem}section{overflow:auto}th,td{padding:.4rem;text-align:left;border-bottom:1px solid #ddd}img{max-width:100%}</style>
+<h1>ClinVarFlow · {{sample}}</h1><p>Research use only. Tiers implement project-specific prioritization rules.</p>
+{% for label,text in qc %}<details><summary>{{label}}</summary><pre>{{text}}</pre></details>{% endfor %}
+{% for heading,file,fields,rows in tables %}<section><h2>{{heading}}</h2><p>{{file}} · {{rows|length}} records</p><table><tr>{% for key in fields %}<th>{{key}}</th>{% endfor %}</tr>{% for row in rows %}<tr>{% for key in fields %}<td>{{row[key]}}</td>{% endfor %}</tr>{% endfor %}</table></section>{% endfor %}
+{% for img in images %}<img alt="Copy-number profile" src="data:image/png;base64,{{img}}">{% endfor %}</html>

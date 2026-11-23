@@ -1,0 +1,31 @@
+name: ClinVarFlow checks
+on: [push, pull_request]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: {POSTGRES_PASSWORD: ci_only}
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      CVF_TEST_DB_URL: postgresql://postgres:ci_only@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - uses: nf-core/setup-nextflow@v2
+        with: {version: '24.10.4'}
+      - run: pip install -r requirements-test.txt sqlalchemy psycopg2-binary
+      - run: pytest -q tests
+      - run: nextflow run . -profile test --outdir results
+      - run: test -s results/demo.report.html
+      - run: bash tests/test_wiring.sh
+      - name: Run Nextflow module interface tests
+        run: |
+          curl -fsSL https://github.com/askimed/nf-test/releases/download/v0.9.2/nf-test-0.9.2.tar.gz -o "$RUNNER_TEMP/nf-test.tgz"
+          tar -xzf "$RUNNER_TEMP/nf-test.tgz" -C "$RUNNER_TEMP"
+          java -jar "$RUNNER_TEMP/nf-test.jar" test modules tests/main.nf.test --ci

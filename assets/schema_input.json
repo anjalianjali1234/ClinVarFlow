@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "properties": {
+      "patient": {
+        "type": "string",
+        "minLength": 1
+      },
+      "sample": {
+        "type": "string",
+        "minLength": 1
+      },
+      "type": {
+        "enum": [
+          "normal",
+          "tumour",
+          "rna"
+        ]
+      },
+      "fastq_1": {
+        "type": "string",
+        "minLength": 1
+      },
+      "fastq_2": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "patient",
+      "sample",
+      "type",
+      "fastq_1",
+      "fastq_2"
+    ],
+    "additionalProperties": false
+  }
+}

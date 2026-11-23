@@ -1,0 +1,4 @@
+channels: [conda-forge, bioconda]
+dependencies:
+  - delly=1.2.6
+  - bcftools=1.20

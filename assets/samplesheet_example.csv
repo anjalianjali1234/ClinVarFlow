@@ -1,0 +1,5 @@
+patient,sample,type,fastq_1,fastq_2
+HG002,HG002,normal,/data/HG002_R1.fq.gz,/data/HG002_R2.fq.gz
+HCC1395,HCC1395BL,normal,/data/BL_R1.fq.gz,/data/BL_R2.fq.gz
+HCC1395,HCC1395,tumour,/data/T_R1.fq.gz,/data/T_R2.fq.gz
+K562,K562_RNA,rna,/data/K562_R1.fq.gz,/data/K562_R2.fq.gz

@@ -1,0 +1,18 @@
+nextflow_process {
+    name "DELLY process interface"
+    script "../main.nf"
+    process "DELLY"
+    options "-stub-run"
+    test("Stages inputs and emits the declared outputs") {
+        when {
+            params { outdir = "$outputDir/results" }
+            process {
+                """
+                    input[0] = [[id:'TEST',patient:'P',type:'normal',normal:'N'], file("$projectDir/tests/staging/f1"), file("$projectDir/tests/staging/f2")]
+                    input[1] = file("$projectDir/tests/staging/f3")
+                """
+            }
+        }
+        then { assert process.success; assert process.out[0].size() == 1 }
+    }
+}

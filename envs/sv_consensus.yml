@@ -1,0 +1,4 @@
+channels: [conda-forge, bioconda]
+dependencies:
+  - survivor=1.0.7
+  - bcftools=1.20
