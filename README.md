@@ -124,6 +124,10 @@ flowchart TD
 | Fusion | Paired RNA | Arriba and STAR-Fusion evidence, directional consensus TSV |
 | Reporting | Branch outputs | VEP annotation, project tiers, per-sample offline HTML and MultiQC |
 
-[Parameters and database queries](docs/usage.md) · [Outputs](docs/output.md) · [Benchmark status](docs/benchmarks.md) · [Build specification](docs/build-specification.pdf) · [Tool references](docs/tools.md) · [MIT license](LICENSE)
+[Parameters and database queries](docs/usage.md) · [Outputs](docs/output.md) · [Benchmark status](docs/benchmarks.md) · [Build specification](docs/build-specification.pdf) · [Tool references](docs/tools.md)
 
 Research use only. Project tiers prioritize variants for inspection. Clinical interpretation requires separate evidence assessment.
+
+## Copyright
+
+Copyright (c) 2026 ClinVarFlow contributors. All rights reserved. Contact the repository owner for permission to reuse the original project material.
