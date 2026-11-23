@@ -10,7 +10,7 @@ jobs:
         ports: ['5432:5432']
         options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 12
     env:
-      CVF_TEST_DB_URL: postgresql://postgres:ci_only@localhost:5432/postgres
+      CVF_TEST_DB_URL: postgresql+psycopg2://postgres:ci_only@localhost:5432/postgres
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,7 +19,7 @@ jobs:
         with: {distribution: temurin, java-version: '17'}
       - uses: nf-core/setup-nextflow@v2
         with: {version: '24.10.4'}
-      - run: pip install -r requirements-test.txt sqlalchemy psycopg2-binary
+      - run: pip install -r requirements-test.txt 'sqlalchemy~=2.0.0' 'psycopg2-binary~=2.9.0'
       - run: pytest -q tests
       - run: nextflow run . -profile test --outdir results
       - run: test -s results/demo.report.html
